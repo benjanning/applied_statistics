@@ -1,2 +1,9 @@
-# applied_statistics
-My work for the Applied Statistics Module as part of the HDip in Data Analytics - ATU
+# My Assessment Repository
+## by Ben Janning (g00411362@atu.ie)
+
+This repository contains my assessment submission for the module...
+
+## Getting Started
+
+1. Clone this repository...
+2. Run the code....
