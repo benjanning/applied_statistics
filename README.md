@@ -1,92 +1,32 @@
-# Applied Statistics Assessment Repository
+# Plant growth & statistics
 
-## Course Details
-- **Lecturer**: Ian McLoughlin
+Compare plant-growth treatments using visual exploration and statistical inference.
 
-## Overview
-This repository showcases my academic work for the **Applied Statistics** module at Atlantic Technological University (ATU) during the Winter 2024 semester. It provides a comprehensive exploration of statistical methods and data analysis using Python.
+![Authentic project preview](assets/preview.jpg)
 
-## Quick Start
+**Python · SciPy · statsmodels · pandas**
 
-### Prerequisites
-- Python 3.8 or later
-- Git
-- pip (Python package manager)
+[Visual case study](https://benjanning.github.io/projects/projects/applied-statistics/) · [Main portfolio](https://benjanning.github.io/projects/)
 
-### Installation
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/benjanning/applied_statistics.git
-   cd applied_statistics
-   ```
+## What it does
 
-2. **Install Dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+Analysed the PlantGrowth teaching dataset using distribution plots, assumption checks, group comparisons and follow-up tests.
 
-## Repository Structure
+## Key features
 
-### 1. Statistical Tasks Notebook (`tasks.ipynb`)
-A comprehensive exploration of fundamental statistical techniques:
+- Distribution plots with the underlying observations.
+- Normality and variance checks, t-tests and one-way ANOVA.
+- Tukey follow-up comparisons and a non-parametric alternative.
 
-#### Covered Topics
-- **Combinatorics**: Advanced probability analysis using permutations and combinations
-- **Normality Testing**: Evaluating data distribution using NumPy's normal distribution
-- **Hypothesis Testing**:
-  - t-Test for comparing heart rates before and after exercise
-  - ANOVA for complex statistical comparisons
-  - Type II error simulation and statistical power analysis
+## Explore the analysis
 
-#### Learning Outcomes
-- Practical implementation of statistical methods
-- Detailed explanations of mathematical concepts
-- Visual representations of statistical phenomena
+```bash
+python -m pip install -r requirements.txt
+```
+Open project.ipynb in a Jupyter interface from the repository root. PlantGrowth.csv is included. Jupyter’s interface is installed separately; the requirements provide the tested analysis packages and kernel.
 
-### 2. Plant Growth Analysis Project (`project.ipynb`)
+## Technical details and verification
 
-#### Dataset: PlantGrowth
-Investigates the impact of different treatments on plant weights using rigorous statistical techniques.
+The project notebook executed all 18 code cells in V1. The chart above is a new presentation of the same 30 included observations, not a new experiment. Statistical significance does not establish practical importance. Independence depends on study design; distribution checks cannot prove it. tasks.ipynb is supporting coursework and was not fully rerun.
 
-#### Key Analysis Components
-- Descriptive statistical analysis
-- Comparative group analysis using:
-  - t-tests
-  - One-way ANOVA
-- Comprehensive data visualization
-  - Boxplots
-  - Histograms
-  - Density plots
-
-#### Methodological Insights
-- Comparative analysis techniques
-- Rationale for choosing ANOVA over multiple t-tests
-- Statistical significance evaluation
-
-## Tech Stack and Libraries
-
-### Core Libraries
-- **NumPy**: Numerical computing and random generation
-- **Pandas**: Data manipulation and analysis
-- **SciPy**: Statistical functions and scientific computing
-- **Statsmodels**: Advanced statistical modeling
-
-### Visualization Tools
-- **Matplotlib**: Fundamental plotting capabilities
-- **Seaborn**: Statistical data visualization
-
-## Key Skills Demonstrated
-- Statistical hypothesis testing
-- Data preprocessing
-- Experimental design analysis
-- Scientific computing
-- Data visualization
-
-## Portfolio
-Explore other [Python, web application and data analytics projects](https://benjanning.github.io/projects/).
-
-*This is an academic assessment, not a commercial statistical package.*
-
-## Verification (October 2026)
-
-The PlantGrowth project notebook executed all 18 code cells against the included CSV. The portfolio includes both an original saved output and a new presentation of the same 30 observations. Independence depends on study design; it is not something a distribution plot proves.
+[Original documentation and academic references](COURSEWORK.md) · [Visual provenance](assets/PROVENANCE.md)
