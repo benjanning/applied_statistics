@@ -2,7 +2,6 @@
 
 ## Course Details
 - **Lecturer**: Ian McLoughlin
-- **Student**: G00411362
 
 ## Overview
 This repository showcases my academic work for the **Applied Statistics** module at Atlantic Technological University (ATU) during the Winter 2024 semester. It provides a comprehensive exploration of statistical methods and data analysis using Python.
@@ -83,6 +82,7 @@ Investigates the impact of different treatments on plant weights using rigorous 
 - Scientific computing
 - Data visualization
 
-## Contact
-For questions, collaborations, or feedback:
-- **Email**: G00411362@atu.ie
+## Portfolio
+Explore other [Python, web application and data analytics projects](https://github.com/benjanning/programming2022).
+
+*This is an academic assessment, not a commercial statistical package.*
