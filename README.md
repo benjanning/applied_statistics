@@ -83,6 +83,10 @@ Investigates the impact of different treatments on plant weights using rigorous 
 - Data visualization
 
 ## Portfolio
-Explore other [Python, web application and data analytics projects](https://github.com/benjanning/programming2022).
+Explore other [Python, web application and data analytics projects](https://benjanning.github.io/projects/).
 
 *This is an academic assessment, not a commercial statistical package.*
+
+## Verification (October 2026)
+
+The PlantGrowth project notebook executed all 18 code cells against the included CSV. The portfolio includes both an original saved output and a new presentation of the same 30 observations. Independence depends on study design; it is not something a distribution plot proves.
