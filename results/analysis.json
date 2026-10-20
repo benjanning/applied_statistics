@@ -1,0 +1,21 @@
+{
+  "rows": 30,
+  "groups": [
+    "ctrl",
+    "trt1",
+    "trt2"
+  ],
+  "primary": "Welch one-way ANOVA",
+  "welch_F": 5.180972408113194,
+  "welch_p": 0.017392821490169935,
+  "classic_F": 4.846087862380136,
+  "classic_p": 0.015909958325622926,
+  "pairwise": "Three two-sided Welch comparisons; Bonferroni family adjustment, alpha .05",
+  "mean_intervals": "Pointwise 95% t intervals, not simultaneous",
+  "difference_intervals": "Bonferroni-adjusted familywise 95% Welch-approximation intervals",
+  "dataset_sha256": "75e02a3726cc12fc41b694b29ed42e11e53f0ea3c73fda3df624567f1db9a74d",
+  "python": "3.12.2",
+  "numpy": "2.5.4",
+  "pandas": "3.0.6",
+  "scipy": "1.18.1"
+}
