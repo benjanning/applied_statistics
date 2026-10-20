@@ -276,3 +276,8 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+node_modules/
+verification/
+test-results/
+playwright-report/

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "project": {
+    "slug": "applied-statistics",
+    "title": "Plant growth & statistics",
+    "category": "Data analysis",
+    "repo": "applied_statistics",
+    "stack": [
+      "Python",
+      "SciPy",
+      "statsmodels",
+      "pandas"
+    ],
+    "image": "observations.png",
+    "alt": "All thirty PlantGrowth observations shown by control and two treatment groups",
+    "desc": "Explore thirty plant-growth observations, compare the groups and explain what the statistics can—and cannot—support.",
+    "built": "Added a reproducible, visual PlantGrowth investigation alongside the original statistical coursework, preserving all raw observations and explaining uncertainty.",
+    "why": "Differences in averages can be misleading without considering variability. This project shows how visual evidence and statistical testing support a careful comparison.",
+    "how": [
+      "Inspect every observation under control and two treatment conditions, with ten examples per group.",
+      "Compare sample means and uncertainty; use Welch ANOVA as the primary omnibus comparison, with classic ANOVA shown as sensitivity analysis.",
+      "Examine three pairwise differences using Welch tests and a Bonferroni family adjustment, then interpret the small-sample limits."
+    ],
+    "demonstrates": "Statistical reasoning, hypothesis testing, visual communication and explaining uncertainty around a decision.",
+    "caption": "Ten source observations per group, with median/quartile boxes. Every point comes from the preserved PlantGrowth teaching dataset; visual jitter does not alter the measurements.",
+    "result": "The result summary is generated from the same analysis run as these figures.",
+    "limits": "Thirty observations in a teaching dataset do not establish universal treatment effectiveness. Independence and the original experimental design cannot be verified from the CSV alone. Mean intervals assume approximate normality; Welch inference is a small-sample approximation. A p-value is neither an effect size nor the probability that the null hypothesis is true. Methods were selected for this educational investigation, not preregistered confirmatory analysis.",
+    "technical": "Source validation checks three groups of ten finite measurements. The reproducible script records dataset SHA-256 and dependency versions, computes Welch and classic one-way ANOVA, pointwise t intervals and three Bonferroni-adjusted Welch pair comparisons. Tests independently reconcile classic F with sums of squares, verify group summaries/multiplicity and reproduce numeric outputs byte-for-byte. Original notebook exercises remain intact.",
+    "run": "Install requirements.txt, run python analyze_plants.py and python -m unittest discover -p \"test_*.py\" -v. Results, raw source CSV and the original project.ipynb are available in the repository.",
+    "extra": "",
+    "gallery": [
+      [
+        "means.png",
+        "Sample means and explicitly pointwise 95% uncertainty intervals."
+      ],
+      [
+        "differences.png",
+        "Pairwise differences with a three-comparison multiplicity adjustment."
+      ]
+    ]
+  },
+  "assets": [
+    {
+      "name": "observations.png",
+      "path": "results/observations.png",
+      "provenance": "All 30 authentic PlantGrowth dried-weight observations; seeded visual jitter only. Boxes show median and quartiles."
+    },
+    {
+      "name": "means.png",
+      "path": "results/group-means.png",
+      "provenance": "Group sample means and pointwise 95% t intervals computed from the source CSV. These are not simultaneous pairwise intervals."
+    },
+    {
+      "name": "differences.png",
+      "path": "results/pairwise-differences.png",
+      "provenance": "Three two-sided Welch mean differences with three-comparison Bonferroni-adjusted familywise 95% approximate intervals and adjusted p-values."
+    }
+  ],
+  "result_path": "results/portfolio-summary.txt"
+}
