@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "source_repository": "benjanning/applied_statistics",
+  "source_revision": "fc9f72275326e0ab2a6ba03a0aba27574ddd0c26",
+  "verification_run": 39429112983,
+  "project": {
+    "slug": "applied-statistics",
+    "title": "Plant growth & statistics",
+    "category": "Data analysis",
+    "repo": "applied_statistics",
+    "stack": [
+      "Python",
+      "SciPy",
+      "statsmodels",
+      "pandas"
+    ],
+    "image": "observations.png",
+    "alt": "All thirty PlantGrowth observations shown by control and two treatment groups",
+    "desc": "Explore thirty plant-growth observations, compare the groups and explain what the statistics can—and cannot—support.",
+    "built": "Added a reproducible, visual PlantGrowth investigation alongside the original statistical coursework, preserving all raw observations and explaining uncertainty.",
+    "why": "Differences in averages can be misleading without considering variability. This project shows how visual evidence and statistical testing support a careful comparison.",
+    "how": [
+      "Inspect every observation under control and two treatment conditions, with ten examples per group.",
+      "Compare sample means and uncertainty; use Welch ANOVA as the primary omnibus comparison, with classic ANOVA shown as sensitivity analysis.",
+      "Examine three pairwise differences using Welch tests and a Bonferroni family adjustment, then interpret the small-sample limits."
+    ],
+    "demonstrates": "Statistical reasoning, hypothesis testing, visual communication and explaining uncertainty around a decision.",
+    "caption": "Ten source observations per group, with median/quartile boxes. Every point comes from the preserved PlantGrowth teaching dataset; visual jitter does not alter the measurements.",
+    "result": "Thirty source observations, ten per group. Mean dried weights: control 5.032, treatment 1 4.661, treatment 2 5.526 (dataset units). Welch omnibus p=0.0174; classic equal-variance ANOVA p=0.0159 is shown as a sensitivity analysis. Pairwise comparisons use a three-comparison Bonferroni adjustment. Methods, assumptions and all observations are visible; this small teaching dataset does not establish general treatment effectiveness.",
+    "limits": "Thirty observations in a teaching dataset do not establish universal treatment effectiveness. Independence and the original experimental design cannot be verified from the CSV alone. Mean intervals assume approximate normality; Welch inference is a small-sample approximation. A p-value is neither an effect size nor the probability that the null hypothesis is true. Methods were selected for this educational investigation, not preregistered confirmatory analysis.",
+    "technical": "Source validation checks three groups of ten finite measurements. The reproducible script records dataset SHA-256 and dependency versions, computes Welch and classic one-way ANOVA, pointwise t intervals and three Bonferroni-adjusted Welch pair comparisons. Tests independently reconcile classic F with sums of squares, verify group summaries/multiplicity and reproduce numeric outputs byte-for-byte. Original notebook exercises remain intact.",
+    "run": "Install requirements.txt, run python analyze_plants.py and python -m unittest discover -p \"test_*.py\" -v. Results, raw source CSV and the original project.ipynb are available in the repository.",
+    "extra": "",
+    "gallery": [
+      [
+        "means.png",
+        "Sample means and explicitly pointwise 95% uncertainty intervals."
+      ],
+      [
+        "differences.png",
+        "Pairwise differences with a three-comparison multiplicity adjustment."
+      ]
+    ]
+  },
+  "assets": [
+    {
+      "name": "observations.png",
+      "sha256": "a13cf58c040aeaa7ef1a83483a4bb03b170b953698c74e41010e2480f82ce784",
+      "bytes": 71633,
+      "provenance": "All 30 authentic PlantGrowth dried-weight observations; seeded visual jitter only. Boxes show median and quartiles."
+    },
+    {
+      "name": "means.png",
+      "sha256": "ee6f8390432bef27724bf6568c0213700059fa8a3a1d8a1921813d11dfb33df2",
+      "bytes": 59313,
+      "provenance": "Group sample means and pointwise 95% t intervals computed from the source CSV. These are not simultaneous pairwise intervals."
+    },
+    {
+      "name": "differences.png",
+      "sha256": "0f47c3d47f0ec70a606bdd8c1b8ce8cfa150a26ab7f6cbb14b2902a89a8e1fdc",
+      "bytes": 78868,
+      "provenance": "Three two-sided Welch mean differences with three-comparison Bonferroni-adjusted familywise 95% approximate intervals and adjusted p-values."
+    }
+  ]
+}
