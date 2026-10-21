@@ -282,3 +282,6 @@ verification/
 test-results/
 playwright-report/
 docs/
+
+# Regenerated from the same analysis objects in every verified build.
+results/explorer-data.json
