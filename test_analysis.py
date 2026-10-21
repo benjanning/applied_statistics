@@ -15,5 +15,5 @@ class PlantAnalysisTests(unittest.TestCase):
     def test_computation_is_reproducible(self):
         with tempfile.TemporaryDirectory() as d:
             analyze(d,figures=False)
-            for name in ['analysis.json','group-summary.csv','pairwise-comparisons.csv','portfolio-summary.txt']:self.assertEqual((Path(d)/name).read_bytes(),(ROOT/'results'/name).read_bytes())
+            for name in ['analysis.json','group-summary.csv','pairwise-comparisons.csv','portfolio-summary.txt','explorer-data.json']:self.assertEqual((Path(d)/name).read_bytes(),(ROOT/'results'/name).read_bytes())
 if __name__=='__main__':unittest.main()

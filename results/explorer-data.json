@@ -1,0 +1,240 @@
+{
+  "schema_version": 1,
+  "analysis": {
+    "rows": 30,
+    "groups": [
+      "ctrl",
+      "trt1",
+      "trt2"
+    ],
+    "primary": "Welch one-way ANOVA",
+    "welch_F": 5.180972408113194,
+    "welch_p": 0.017392821490169935,
+    "classic_F": 4.846087862380136,
+    "classic_p": 0.015909958325622926,
+    "pairwise": "Three two-sided Welch comparisons; Bonferroni family adjustment, alpha .05",
+    "mean_intervals": "Pointwise 95% t intervals, not simultaneous",
+    "difference_intervals": "Bonferroni-adjusted familywise 95% Welch-approximation intervals",
+    "dataset_sha256": "75e02a3726cc12fc41b694b29ed42e11e53f0ea3c73fda3df624567f1db9a74d",
+    "python": "3.12.2",
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "scipy": "1.18.1"
+  },
+  "observations": [
+    {
+      "rownames": 1,
+      "weight": 4.17,
+      "group": "ctrl"
+    },
+    {
+      "rownames": 2,
+      "weight": 5.58,
+      "group": "ctrl"
+    },
+    {
+      "rownames": 3,
+      "weight": 5.18,
+      "group": "ctrl"
+    },
+    {
+      "rownames": 4,
+      "weight": 6.11,
+      "group": "ctrl"
+    },
+    {
+      "rownames": 5,
+      "weight": 4.5,
+      "group": "ctrl"
+    },
+    {
+      "rownames": 6,
+      "weight": 4.61,
+      "group": "ctrl"
+    },
+    {
+      "rownames": 7,
+      "weight": 5.17,
+      "group": "ctrl"
+    },
+    {
+      "rownames": 8,
+      "weight": 4.53,
+      "group": "ctrl"
+    },
+    {
+      "rownames": 9,
+      "weight": 5.33,
+      "group": "ctrl"
+    },
+    {
+      "rownames": 10,
+      "weight": 5.14,
+      "group": "ctrl"
+    },
+    {
+      "rownames": 11,
+      "weight": 4.81,
+      "group": "trt1"
+    },
+    {
+      "rownames": 12,
+      "weight": 4.17,
+      "group": "trt1"
+    },
+    {
+      "rownames": 13,
+      "weight": 4.41,
+      "group": "trt1"
+    },
+    {
+      "rownames": 14,
+      "weight": 3.59,
+      "group": "trt1"
+    },
+    {
+      "rownames": 15,
+      "weight": 5.87,
+      "group": "trt1"
+    },
+    {
+      "rownames": 16,
+      "weight": 3.83,
+      "group": "trt1"
+    },
+    {
+      "rownames": 17,
+      "weight": 6.03,
+      "group": "trt1"
+    },
+    {
+      "rownames": 18,
+      "weight": 4.89,
+      "group": "trt1"
+    },
+    {
+      "rownames": 19,
+      "weight": 4.32,
+      "group": "trt1"
+    },
+    {
+      "rownames": 20,
+      "weight": 4.69,
+      "group": "trt1"
+    },
+    {
+      "rownames": 21,
+      "weight": 6.31,
+      "group": "trt2"
+    },
+    {
+      "rownames": 22,
+      "weight": 5.12,
+      "group": "trt2"
+    },
+    {
+      "rownames": 23,
+      "weight": 5.54,
+      "group": "trt2"
+    },
+    {
+      "rownames": 24,
+      "weight": 5.5,
+      "group": "trt2"
+    },
+    {
+      "rownames": 25,
+      "weight": 5.37,
+      "group": "trt2"
+    },
+    {
+      "rownames": 26,
+      "weight": 5.29,
+      "group": "trt2"
+    },
+    {
+      "rownames": 27,
+      "weight": 4.92,
+      "group": "trt2"
+    },
+    {
+      "rownames": 28,
+      "weight": 6.15,
+      "group": "trt2"
+    },
+    {
+      "rownames": 29,
+      "weight": 5.8,
+      "group": "trt2"
+    },
+    {
+      "rownames": 30,
+      "weight": 5.26,
+      "group": "trt2"
+    }
+  ],
+  "groups": [
+    {
+      "group": "ctrl",
+      "n": 10,
+      "mean": 5.031999999999999,
+      "sd": 0.5830913783924057,
+      "ci_low": 4.614881555655038,
+      "ci_high": 5.44911844434496,
+      "label": "Control"
+    },
+    {
+      "group": "trt1",
+      "n": 10,
+      "mean": 4.661,
+      "sd": 0.7936756964347033,
+      "ci_low": 4.093238609454358,
+      "ci_high": 5.228761390545642,
+      "label": "Treatment 1"
+    },
+    {
+      "group": "trt2",
+      "n": 10,
+      "mean": 5.526,
+      "sd": 0.44257328332278606,
+      "ci_low": 5.2094021453769335,
+      "ci_high": 5.842597854623066,
+      "label": "Treatment 2"
+    }
+  ],
+  "comparisons": [
+    {
+      "comparison": "Treatment 1 minus Control",
+      "difference": -0.37099999999999955,
+      "ci_low": -1.2004410679270154,
+      "ci_high": 0.45844106792701633,
+      "p_raw": 0.2503825085875489,
+      "p_bonferroni": 0.7511475257626468,
+      "welch_df": 16.5235850568593,
+      "first": "ctrl",
+      "second": "trt1"
+    },
+    {
+      "comparison": "Treatment 2 minus Control",
+      "difference": 0.49400000000000066,
+      "ci_low": -0.12144798625355291,
+      "ci_high": 1.1094479862535542,
+      "p_raw": 0.04789925560196889,
+      "p_bonferroni": 0.14369776680590668,
+      "welch_df": 16.785764482605718,
+      "first": "ctrl",
+      "second": "trt2"
+    },
+    {
+      "comparison": "Treatment 2 minus Treatment 1",
+      "difference": 0.8650000000000002,
+      "ci_low": 0.0847750685486649,
+      "ci_high": 1.6452249314513354,
+      "p_raw": 0.009298404717269842,
+      "p_bonferroni": 0.027895214151809525,
+      "welch_df": 14.103569122760339,
+      "first": "trt1",
+      "second": "trt2"
+    }
+  ]
+}
