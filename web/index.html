@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>PlantGrowth comparison lab | Ben Janning</title>
+    <meta
+      name="description"
+      content="Explore thirty source observations, sample differences and adjusted uncertainty in the PlantGrowth teaching dataset."
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to the analysis</a>
+    <header>
+      <a href="https://benjanning.github.io/projects/"
+        >BEN JANNING / DATA &amp; SOFTWARE</a
+      ><span>PlantGrowth · Observed data</span>
+    </header>
+    <main id="main">
+      <section class="intro">
+        <p class="eyebrow">01 / SEE THE DATA, THEN THE DIFFERENCE</p>
+        <h1>
+          Averages tell a story.<br /><em>Variation gives it context.</em>
+        </h1>
+        <p class="lede">
+          Thirty dried-weight measurements. Three conditions. Explore the size
+          of their differences—and how much uncertainty remains.
+        </p>
+        <p class="notice">
+          A small teaching dataset, not a treatment recommendation. Weight is
+          reported in dataset units; the CSV does not establish a unit such as
+          grams or verify the original experimental design.
+        </p>
+      </section>
+      <div id="failure" role="alert" hidden>
+        The analysis could not be loaded. Please reload or inspect the saved
+        results in the source repository.
+      </div>
+      <div id="results" hidden>
+        <section class="overview">
+          <div>
+            <p class="eyebrow">02 / ALL THIRTY OBSERVATIONS</p>
+            <h2>Different centres.<br />Overlapping measurements.</h2>
+            <div id="observations-chart"></div>
+            <p class="fine">
+              Each circle is one original measurement. Horizontal offsets
+              separate observations and have no numerical meaning. Diamonds and
+              lines show means and pointwise 95% t intervals, not pairwise
+              tests.
+            </p>
+          </div>
+          <div>
+            <h3>The groups at a glance</h3>
+            <div id="group-cards"></div>
+            <p class="fine">
+              SD describes variation among individual observations. A confidence
+              interval describes uncertainty about a mean under the model
+              assumptions.
+            </p>
+          </div>
+        </section>
+        <section class="comparison">
+          <div class="selection">
+            <div>
+              <p class="eyebrow">03 / COMPARE THE SIZE, KEEP THE UNCERTAINTY</p>
+              <h2>What does the difference mean?</h2>
+            </div>
+            <div>
+              <label for="pair">Compare conditions</label
+              ><select id="pair"></select>
+              <p class="fine">
+                Select one of three saved comparisons. This does not rerun or
+                change the statistical method.
+              </p>
+            </div>
+          </div>
+          <div class="pair-panel">
+            <div>
+              <h3 id="pair-title"></h3>
+              <div class="effect">
+                <strong id="difference"></strong
+                ><span
+                  >difference in sample mean dried weight<br />dataset
+                  units</span
+                >
+              </div>
+              <p id="interval"></p>
+              <p id="adjusted-p"></p>
+              <p id="pair-story" class="story"></p>
+            </div>
+            <div>
+              <div id="difference-chart"></div>
+              <p class="fine">
+                Bonferroni-adjusted familywise 95% Welch-approximation interval.
+                The dashed line marks zero difference. Every selection uses the
+                same axis scale.
+              </p>
+            </div>
+          </div>
+          <p
+            id="selection-status"
+            class="sr-only"
+            role="status"
+            aria-live="polite"
+          ></p>
+          <p class="notice">
+            Statistical significance does not establish practical importance. No
+            minimum worthwhile difference is specified for this teaching
+            example; a small p-value alone cannot tell us which condition is
+            useful in practice.
+          </p>
+        </section>
+        <section class="evidence">
+          <p class="eyebrow">04 / INSPECT THE COMPLETE COMPARISON</p>
+          <h2>Three questions. One adjustment.</h2>
+          <div
+            class="table-scroll"
+            role="region"
+            tabindex="0"
+            aria-label="All adjusted comparisons, scroll horizontally on small screens"
+          >
+            <table>
+              <caption>
+                Two-sided Welch comparisons, Bonferroni-adjusted across all
+                three pairs
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Comparison</th>
+                  <th scope="col">Mean difference</th>
+                  <th scope="col">Familywise 95% interval</th>
+                  <th scope="col">Adjusted p</th>
+                </tr>
+              </thead>
+              <tbody id="pair-table"></tbody>
+            </table>
+          </div>
+          <details>
+            <summary>Inspect all 30 source observations</summary>
+            <table>
+              <caption>
+                Original observation identifiers, groups and dried weights
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Source row</th>
+                  <th scope="col">Condition</th>
+                  <th scope="col">Weight (dataset units)</th>
+                </tr>
+              </thead>
+              <tbody id="observations-table"></tbody>
+            </table>
+          </details>
+          <p>
+            <a href="observations.csv" download
+              >Download the original observations CSV ↗</a
+            >
+            · <a href="data.json">Inspect analysis JSON ↗</a>
+          </p>
+        </section>
+        <section class="limits">
+          <p class="eyebrow">05 / METHODS AND LIMITS</p>
+          <h2>Evidence, with its assumptions.</h2>
+          <p id="omnibus"></p>
+          <p>
+            Welch methods allow unequal variances, but still rely on independent
+            observations and approximate distributional assumptions. Ten
+            measurements per condition give limited information about those
+            assumptions. The plots make spread and unusual observations visible;
+            no observation is removed and no diagnostic p-value is used to
+            choose a more favourable test.
+          </p>
+          <p>
+            Mean intervals are pointwise 95% t intervals. Difference intervals
+            and p-values use a three-comparison Bonferroni adjustment; they are
+            different quantities. Overlapping mean intervals are not a pairwise
+            significance test. A p-value is not the probability that a
+            hypothesis is true, an effect size or proof of general
+            effectiveness.
+          </p>
+          <p>
+            These are descriptive and model-based comparisons of the preserved R
+            PlantGrowth teaching data. The CSV cannot verify the original
+            experimental design or independence. There is no replication study,
+            preregistered analysis or general treatment recommendation.
+          </p>
+          <p id="receipt" class="fine"></p>
+          <p>
+            <a
+              href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/PlantGrowth.html"
+              >R dataset documentation ↗</a
+            >
+            ·
+            <a
+              href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html"
+              >Welch test reference ↗</a
+            >
+          </p>
+        </section>
+      </div>
+      <noscript
+        >This explorer needs JavaScript. The source repository contains the
+        observations, saved numerical analysis and figures.</noscript
+      >
+    </main>
+    <footer>
+      <a
+        href="https://benjanning.github.io/projects/projects/applied-statistics/"
+        >Read the case study ↗</a
+      ><a href="https://github.com/benjanning/applied_statistics"
+        >Explore the source ↗</a
+      ><span>Real teaching data · Carefully limited conclusions</span>
+    </footer>
+  </body>
+</html>

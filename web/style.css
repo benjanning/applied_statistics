@@ -1,0 +1,293 @@
+:root {
+  --ink: #203f34;
+  --muted: #52645b;
+  --paper: #f5f4ec;
+  --line: #cbd2c5;
+  --green: #dce6d6;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font:
+    16px/1.65 system-ui,
+    sans-serif;
+}
+a {
+  color: inherit;
+  text-underline-offset: 4px;
+}
+a:hover {
+  color: #7a4b29;
+}
+header,
+footer {
+  padding: 24px max(5vw, 24px);
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+}
+header > a {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+main {
+  max-width: 1170px;
+  margin: auto;
+  padding: 65px 28px 30px;
+}
+.intro {
+  max-width: 930px;
+}
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  margin: 0 0 16px;
+}
+h1,
+h2,
+h3 {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  line-height: 1.1;
+}
+h1 {
+  font-size: clamp(45px, 5.7vw, 76px);
+  letter-spacing: -0.04em;
+  margin: 15px 0 28px;
+}
+h1 em {
+  color: #9b6138;
+}
+h2 {
+  font-size: 33px;
+  margin: 10px 0 22px;
+}
+h3 {
+  font-size: 25px;
+  margin: 0 0 18px;
+}
+.lede {
+  font-size: 20px;
+  max-width: 700px;
+}
+.notice,
+.story {
+  border-left: 3px solid #99633c;
+  padding: 13px 18px;
+  background: #ebe8db;
+}
+.notice {
+  font-size: 14px;
+}
+.fine {
+  font-size: 12px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.overview {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  border-block: 1px solid var(--line);
+  margin: 40px 0;
+  padding: 32px 0;
+}
+.group-card {
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0;
+}
+.group-card h4 {
+  margin: 0;
+  font-size: 16px;
+}
+.group-card p {
+  margin: 7px 0;
+}
+.selection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+  margin: 25px 0;
+}
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 650;
+  margin-bottom: 6px;
+}
+select {
+  width: 100%;
+  background: #fffef8;
+  color: var(--ink);
+  font: inherit;
+  padding: 12px;
+  border: 1px solid #849382;
+  border-radius: 3px;
+}
+.pair-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding: 28px;
+  background: #ecefe4;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+}
+.effect strong {
+  display: block;
+  font:
+    48px/1.2 Georgia,
+    serif;
+  color: #80502e;
+}
+.effect span {
+  display: block;
+  font-size: 13px;
+  margin-top: 8px;
+}
+.pair-panel p {
+  font-size: 13px;
+}
+.story {
+  margin-bottom: 0;
+}
+svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  font:
+    14px system-ui,
+    sans-serif;
+  fill: var(--ink);
+}
+.evidence,
+.limits {
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
+}
+.limits {
+  max-width: 850px;
+}
+.table-scroll {
+  overflow-x: auto;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+caption {
+  text-align: left;
+  font-size: 12px;
+  color: var(--muted);
+  padding: 10px 0;
+}
+th,
+td {
+  text-align: left;
+  padding: 12px 9px;
+  border-bottom: 1px solid var(--line);
+}
+th {
+  font-weight: 650;
+}
+tr.selected {
+  background: var(--green);
+}
+details {
+  margin: 26px 0;
+  border-block: 1px solid var(--line);
+  padding: 16px 0;
+}
+summary {
+  cursor: pointer;
+  font-weight: 650;
+}
+.sr-only,
+.skip:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.skip:focus {
+  display: block;
+  padding: 12px;
+}
+footer {
+  border-top: 1px solid var(--line);
+  border-bottom: 0;
+  margin-top: 40px;
+}
+footer span {
+  color: var(--muted);
+}
+:focus-visible {
+  outline: 3px solid #98633c;
+  outline-offset: 4px;
+}
+#failure {
+  padding: 20px;
+  border: 2px solid #99633c;
+}
+[hidden] {
+  display: none !important;
+}
+@media (max-width: 700px) {
+  main {
+    padding: 40px 20px 20px;
+  }
+  header,
+  footer {
+    padding: 20px;
+    gap: 8px;
+  }
+  .overview,
+  .selection,
+  .pair-panel {
+    grid-template-columns: 1fr;
+    gap: 23px;
+  }
+  .overview {
+    margin: 30px 0;
+  }
+  .pair-panel {
+    padding: 20px;
+  }
+  .lede {
+    font-size: 18px;
+  }
+  h2 {
+    font-size: 29px;
+  }
+  .table-scroll table {
+    min-width: 680px;
+  }
+  .evidence,
+  .limits {
+    margin-top: 35px;
+  }
+  svg {
+    font-size: 16px;
+  }
+  details table {
+    font-size: 12px;
+  }
+  details td,
+  details th {
+    padding: 10px 4px;
+  }
+}
