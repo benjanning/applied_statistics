@@ -43,12 +43,28 @@
           <div>
             <p class="eyebrow">02 / ALL THIRTY OBSERVATIONS</p>
             <h2>Different centres.<br />Overlapping measurements.</h2>
+            <fieldset class="bar-controls" aria-describedby="bar-explanation">
+              <legend>What do the bars show?</legend>
+              <label
+                ><input type="radio" name="bars" value="ci" checked />
+                Uncertainty: 95% mean interval</label
+              ><label
+                ><input type="radio" name="bars" value="sd" /> Spread: mean ± 1
+                SD</label
+              >
+            </fieldset>
             <div id="observations-chart"></div>
+            <p
+              id="bar-explanation"
+              class="bar-explanation"
+              role="status"
+              aria-live="polite"
+            ></p>
             <p class="fine">
               Each circle is one original measurement. Horizontal offsets
-              separate observations and have no numerical meaning. Diamonds and
-              lines show means and pointwise 95% t intervals, not pairwise
-              tests.
+              separate observations and have no numerical meaning. Diamonds mark
+              sample means. The bar control changes the summaries, never the
+              thirty points or the axis scale.
             </p>
           </div>
           <div>

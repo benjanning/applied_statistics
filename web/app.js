@@ -21,14 +21,25 @@ function text(x, y, value, attrs = {}) {
 function line(x1, y1, x2, y2, attrs = {}) {
   return svgElement("line", { x1, y1, x2, y2, stroke: "#647666", ...attrs });
 }
-function observationChart(data) {
+function observationChart(data, mode) {
+  const spread = mode === "sd";
   const chart = svg(
-    "All 30 original dried-weight observations by condition, with means and pointwise 95% t intervals. Exact values are available in the observation table.",
+    `All 30 original dried-weight observations by condition, with means and ${spread ? "one sample standard deviation on either side" : "pointwise 95% t intervals"}. Exact values and bar endpoints are available in the group summaries and observation table.`,
     350,
   );
   const weights = data.observations.map((row) => row.weight),
-    low = Math.floor(Math.min(...weights)),
-    high = Math.ceil(Math.max(...weights));
+    low = Math.floor(
+      Math.min(
+        ...weights,
+        ...data.groups.flatMap((g) => [g.ci_low, g.mean - g.sd]),
+      ),
+    ),
+    high = Math.ceil(
+      Math.max(
+        ...weights,
+        ...data.groups.flatMap((g) => [g.ci_high, g.mean + g.sd]),
+      ),
+    );
   const y = (value) => 275 - ((value - low) / (high - low)) * 230;
   for (let tick = low; tick <= high; tick++) {
     chart.append(
@@ -58,12 +69,24 @@ function observationChart(data) {
       );
       chart.append(point);
     });
+    const lower = spread ? group.mean - group.sd : group.ci_low;
+    const upper = spread ? group.mean + group.sd : group.ci_high;
+    const range = line(x + 32, y(lower), x + 32, y(upper), {
+      "stroke-width": 2,
+      class: "mean-range",
+      "data-group": group.group,
+    });
+    range.append(
+      svgElement(
+        "title",
+        {},
+        `${group.label}: ${spread ? "mean minus/plus one sample SD" : "pointwise 95% mean interval"}, ${number(lower)} to ${number(upper)}`,
+      ),
+    );
     chart.append(
-      line(x + 32, y(group.ci_low), x + 32, y(group.ci_high), {
-        "stroke-width": 2,
-      }),
-      line(x + 26, y(group.ci_low), x + 38, y(group.ci_low)),
-      line(x + 26, y(group.ci_high), x + 38, y(group.ci_high)),
+      range,
+      line(x + 26, y(lower), x + 38, y(lower)),
+      line(x + 26, y(upper), x + 38, y(upper)),
     );
     chart.append(
       svgElement("path", {
@@ -121,10 +144,11 @@ async function start() {
     data.comparisons.length !== 3
   )
     throw Error("Unexpected analysis");
-  $("observations-chart").append(observationChart(data));
+
   for (const group of data.groups) {
     const card = document.createElement("div");
     card.className = "group-card";
+    card.dataset.group = group.group;
     const title = document.createElement("h4");
     title.textContent = group.label;
     const stats = document.createElement("p");
@@ -132,9 +156,30 @@ async function start() {
     const interval = document.createElement("p");
     interval.className = "fine";
     interval.textContent = `Pointwise 95% mean interval: ${number(group.ci_low)} to ${number(group.ci_high)}`;
-    card.append(title, stats, interval);
+    const active = document.createElement("p");
+    active.className = "active-range";
+    card.append(title, stats, interval, active);
     $("group-cards").append(card);
   }
+  function renderObservations() {
+    const mode = document.querySelector('input[name="bars"]:checked').value;
+    const spread = mode === "sd";
+    $("observations-chart").replaceChildren(observationChart(data, mode));
+    $("bar-explanation").textContent = spread
+      ? "These bars span one sample standard deviation either side of each mean. They describe individual variation; they are not confidence or prediction intervals and do not promise a fixed share of observations."
+      : "These pointwise 95% t intervals describe uncertainty in each group mean under independence and approximate normality. They are not ranges for individual observations; their overlap is not a pairwise test.";
+    for (const group of data.groups) {
+      const lower = spread ? group.mean - group.sd : group.ci_low;
+      const upper = spread ? group.mean + group.sd : group.ci_high;
+      document.querySelector(
+        `.group-card[data-group="${group.group}"] .active-range`,
+      ).textContent =
+        `${spread ? "Shown: mean ± 1 SD" : "Shown: 95% mean interval"}: ${number(lower)} to ${number(upper)} dataset units`;
+    }
+  }
+  for (const radio of document.querySelectorAll('input[name="bars"]'))
+    radio.addEventListener("change", renderObservations);
+  renderObservations();
   for (const [i, pair] of data.comparisons.entries()) {
     const option = document.createElement("option");
     option.value = i;
