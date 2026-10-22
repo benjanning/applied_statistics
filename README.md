@@ -8,6 +8,14 @@ Thirty observations, three growing conditions, and a careful look at differences
 
 [Explore the comparisons](https://benjanning.github.io/applied_statistics/) · [Visual case study](https://benjanning.github.io/projects/projects/applied-statistics/) · [Portfolio](https://benjanning.github.io/projects/)
 
+## What do the bars mean?
+
+Switch between **spread: mean ± one sample SD** and **uncertainty: pointwise 95% mean interval**. The chart keeps the same thirty measurements, point positions and axis scale. Group summaries expose the exact active endpoints.
+
+SD describes variation among the observed individuals; these bars are neither confidence nor prediction intervals and promise no fixed percentage of observations. Mean intervals describe uncertainty under the model assumptions, rather than the range of individual measurements. Their overlap is not a pairwise test. The existing Welch/Bonferroni comparisons stay separate and unchanged.
+
+![Actual chart in spread mode](https://raw.githubusercontent.com/benjanning/applied_statistics/portfolio-published/portfolio/export/assets/spread.jpg)
+
 ## Explore size and uncertainty
 
 The comparison lab shows all thirty original measurements, sample means, SDs and pointwise mean intervals. Select a pair to inspect its raw mean difference, familywise adjusted interval and adjusted p-value on the same axis scale. Controls read saved results; they do not change the statistical method.
@@ -40,7 +48,7 @@ python -m http.server 8092 --bind 127.0.0.1 --directory docs
 
 Source UI is in `web/`; generated `docs/` uses `results/explorer-data.json`. For browser verification run `npm ci`, `npx playwright install chromium` and `npm run test:browser` (it starts its own temporary local server).
 
-Six Python regressions reconcile classic ANOVA independently, preserve every source row, check sample SD and adjusted intervals against SciPy, and reproduce numeric outputs exactly. Three browser journeys verify every pair, exact displayed values, original observation table, keyboard selection, mobile layout and loading failure. Inspect [analysis.json](results/analysis.json), [group-summary.csv](results/group-summary.csv) and [pairwise-comparisons.csv](results/pairwise-comparisons.csv). The source hash and environment versions are recorded.
+Six Python regressions reconcile classic ANOVA independently, preserve every source row, check sample SD and adjusted intervals against SciPy, and reproduce numeric outputs exactly. Five browser journeys verify every pair, exact displayed values, original observation table, keyboard selection, mobile layout and loading failure. Inspect [analysis.json](results/analysis.json), [group-summary.csv](results/group-summary.csv) and [pairwise-comparisons.csv](results/pairwise-comparisons.csv). The added chart checks independently calculate means, sample SDs and interval endpoints from the CSV, inspect SVG coordinates, preserve all thirty point positions and verify that pairwise results remain unchanged. The source hash and environment versions are recorded.
 
 ## Context and limits
 

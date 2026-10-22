@@ -5,45 +5,40 @@
     "title": "Plant growth & statistics",
     "category": "Data analysis",
     "repo": "applied_statistics",
-    "stack": [
-      "Python",
-      "SciPy",
-      "pandas",
-      "JavaScript"
-    ],
-    "image": "explorer.png",
-    "alt": "Genuine PlantGrowth explorer showing all thirty observations, group means and variability with selectable adjusted comparisons",
-    "desc": "Explore every measurement, compare the size of group differences and keep statistical uncertainty visible.",
-    "built": "Added an accessible comparison lab to the reproducible PlantGrowth investigation. Every observed value, mean, sample SD and adjusted comparison comes from the same computation as the preserved figures.",
-    "why": "Differences in averages can be misleading without considering variability. This project shows how visual evidence and statistical testing support a careful comparison.",
+    "stack": ["Python", "SciPy", "pandas", "JavaScript"],
+    "image": "spread.jpg",
+    "alt": "Genuine PlantGrowth chart with all thirty measurements, selectable mean-plus-minus-SD bars and exact group endpoints",
+    "desc": "Switch between observed spread and uncertainty in a mean, with the same thirty measurements and auditable bar endpoints.",
+    "built": "Extended the existing PlantGrowth comparison lab with a native chart-bar selector that makes individual spread and uncertainty in a group mean visibly distinct.",
+    "why": "Error bars can look similar while answering different questions. Visitors need to see what changes between sample variation and uncertainty about a mean without mistaking either for a treatment recommendation.",
     "how": [
-      "Inspect all thirty original measurements, three group summaries and pointwise mean intervals; exact source rows remain available in a table and CSV.",
-      "Select one of three saved Welch comparisons to inspect its raw mean difference, adjusted interval and adjusted p-value on a consistent axis.",
-      "Distinguish individual variability, uncertainty and practical importance without changing the method or inferring general treatment effectiveness."
+      "Inspect all thirty original observations. Switch the bars between mean ± one sample SD and pointwise 95% t intervals for each mean.",
+      "Read the exact active endpoints in the group summaries; the point positions, observations and common axis scale stay unchanged.",
+      "Compare the three existing Welch mean differences and Bonferroni-adjusted intervals separately. Changing the bars never changes the statistical method or pairwise results."
     ],
-    "demonstrates": "Reproducible statistics, raw-unit effect interpretation, uncertainty communication, source-data integrity and accessible data visualisation.",
-    "caption": "Actual comparison-lab browser capture. Circles are original measurements; horizontal offsets only separate points. Diamonds and bars show means and pointwise 95% intervals.",
+    "demonstrates": "Clear statistical communication, reproducible observed-data visualisation, independent numerical checks and accessible interaction design.",
+    "caption": "Actual shared-data chart in spread mode: circles are original measurements, diamonds are sample means and bars span mean ± one sample SD. Horizontal offsets only separate points. The uncertainty mode shows explicitly pointwise 95% mean intervals instead.",
     "result": "The result summary is generated from the same analysis run as these figures.",
     "limits": "Thirty observations in a teaching dataset do not establish universal treatment effectiveness. Independence and the original experimental design cannot be verified from the CSV alone. Mean intervals assume approximate normality; Welch inference is a small-sample approximation. A p-value is neither an effect size nor the probability that the null hypothesis is true. Methods were selected for this educational investigation, not preregistered confirmatory analysis.",
-    "technical": "The same in-memory observations, group summaries and Welch/Bonferroni results feed the original Matplotlib figures and the browser export. The build checks exact dataset bytes and attaches the source revision. Six Python regressions preserve reproducibility, independently reconcile classic F, verify every source row and sample SD, and compare adjusted pair intervals/degrees of freedom with the SciPy confidence-interval API. Three browser journeys check all pairs, exact rendered numbers, source table values, keyboard selection, desktop/mobile layout and loading failure. Methods are fixed; selecting a control only reads saved results.",
+    "technical": "The existing shared analysis objects still feed Matplotlib figures and browser data. No analytical method, source row or saved comparison changes. A native radio group changes only the displayed group endpoints; both modes use a fixed scale that includes all observations and both sets of endpoints. Exact active endpoints and clear interpretation accompany the chart. Six existing Python checks independently reconcile source rows, SDs, mean intervals and Welch/Bonferroni results. Five browser journeys additionally calculate means, sample SDs and t-interval endpoints from the original CSV, inspect SVG coordinates, preserve every point, check unchanged pairwise output and exercise keyboard/mobile interaction.",
     "run": "Install requirements.txt, run python analyze_plants.py, python -m unittest discover -p \"test_*.py\" -v and python build_explorer.py. Serve docs/ with a local static server. npm ci and npm run test:browser run repeatable desktop/mobile checks. Original CSV, saved calculations and coursework remain available.",
     "extra": "",
     "gallery": [
       [
+        "mean-interval.jpg",
+        "The same observations and scale in uncertainty mode, with pointwise 95% t intervals and exact endpoints."
+      ],
+      [
+        "mobile-spread.jpg",
+        "Native radio controls, full observed data and readable interpretation at a narrow viewport."
+      ],
+      [
         "comparison-detail.png",
-        "A raw mean difference with its familywise adjusted interval, zero reference and practical-importance caveat."
-      ],
-      [
-        "means.png",
-        "Preserved sample means with explicitly pointwise 95% t intervals; their overlap is not a pairwise test."
-      ],
-      [
-        "differences.png",
-        "All three pairwise differences with a fixed three-comparison Bonferroni adjustment."
+        "The existing raw mean difference and familywise adjusted interval remain independent of the chart-bar choice."
       ]
     ],
     "demo": "https://benjanning.github.io/applied_statistics/",
-    "challenge": "A mean difference, individual variation and uncertainty describe different things. The lab keeps all observations visible and separates pointwise mean intervals from adjusted pairwise intervals. One computation supplies the figures, numerical summaries and interface, with an independent API reconciliation to catch drift. The interpretation explains why a statistically supported difference need not be practically useful."
+    "challenge": "A spread bar and a confidence interval can be visually mistaken for the same claim. The interface changes only the bars while retaining the exact same points and scale, then names the active quantity and exposes its endpoints. The explanation separates observed variation from model-based mean uncertainty, avoids fixed-coverage claims for one SD, and keeps pointwise intervals distinct from the adjusted pairwise tests."
   },
   "assets": [
     {
@@ -75,6 +70,21 @@
       "name": "mobile-explorer.jpg",
       "path": "verification/screenshots/explorer-390.jpg",
       "provenance": "Genuine browser capture of the PlantGrowth comparison lab after checking all three saved comparisons and original observation-table values at desktop/mobile widths. Real source observations, exact shared computation, fixed Welch/Bonferroni methods; no fabricated observations or treatment recommendation."
+    },
+    {
+      "name": "spread.jpg",
+      "path": "verification/screenshots/spread-1440.jpg",
+      "provenance": "Genuine browser capture of the same thirty PlantGrowth observations. Native controls switch mean ± one sample SD versus pointwise 95% mean intervals; all point coordinates and the axis scale are preserved. Exact endpoints independently checked from the original CSV; desktop and 390px browser checks include keyboard interaction. No fabricated measurements, coverage claim or treatment recommendation."
+    },
+    {
+      "name": "mean-interval.jpg",
+      "path": "verification/screenshots/mean-interval-1440.jpg",
+      "provenance": "Genuine browser capture of the same thirty PlantGrowth observations. Native controls switch mean ± one sample SD versus pointwise 95% mean intervals; all point coordinates and the axis scale are preserved. Exact endpoints independently checked from the original CSV; desktop and 390px browser checks include keyboard interaction. No fabricated measurements, coverage claim or treatment recommendation."
+    },
+    {
+      "name": "mobile-spread.jpg",
+      "path": "verification/screenshots/spread-390.jpg",
+      "provenance": "Genuine browser capture of the same thirty PlantGrowth observations. Native controls switch mean ± one sample SD versus pointwise 95% mean intervals; all point coordinates and the axis scale are preserved. Exact endpoints independently checked from the original CSV; desktop and 390px browser checks include keyboard interaction. No fabricated measurements, coverage claim or treatment recommendation."
     }
   ],
   "result_path": "results/portfolio-summary.txt"

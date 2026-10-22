@@ -10,3 +10,7 @@ results/observations.png, group-means.png and pairwise-differences.png are gener
 ## V4 comparison lab
 
 The explorer, comparison-detail and mobile images are genuine automated browser captures after testing all three comparisons and all source observation-table values. The original numerical objects feed both figures and the browser export. Horizontal offsets only separate source dots; weight coordinates and downloaded rows remain unchanged. Mean intervals are pointwise; pairwise intervals/p-values use the fixed three-comparison Bonferroni adjustment. Original data/figures and their attribution remain intact.
+
+## V5 bar interpretation
+
+spread.jpg, mean-interval.jpg and mobile-spread.jpg are genuine browser captures of the same thirty source observations. The first and mobile images show mean ± one sample SD; the second shows pointwise 95% mean intervals. All point positions and the scale remain fixed between modes. Exact endpoints and SVG coordinates are checked against the original CSV before publication. The original data, analyses and figures are unchanged; no measurements or treatment claims are fabricated.
